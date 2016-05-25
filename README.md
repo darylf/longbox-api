@@ -1,9 +1,28 @@
-# Longbox API
+# Longbox
 
-This is the Ruby/Sinatra implementation of a JSON REST API to power my comic book collection tracker. 
+:warning: **This code is a work in progress. It should be considered unstable, untested, and unsupported.** :warning:
 
-To run the tests, runy `bundle exec rspec` from the command line
+## Overview
 
-To run the app, execute `bundle install` from the command line, folowed by `bundle exec rackup -p 8000`
+This is a simple comic book collection tracking app that allows a user to organize their collection and avoid purchasing duplicates. Future idaes and enhancements include:
+  
+  * View common writers and artists in their collection.
+  * Graph purchases and spending over time.
+  * Track a pull list of upcoming releases. 
 
-:boom: This code is still under development, and shouldn't be considered production ready. It is simply an experiment and example app I have coded from scratch. :boom:
+## Prerequisites
+
+  * Ruby 2.3.x
+  * SQLite 3
+  * Bundler
+   
+## Setting up the REST API
+
+  * Run `bundle install` at the root folder to download dependencies.
+  * Run `bundle exec rackup -p 8000` in the root folder.
+  * Navigate to http://localhost:3000 in your favourite browser.
+
+## Running the test suite
+
+  * Run `bundle install` at the root folder to download dependencies.
+  * Run `bundle exec rspec` to execute the test suite.
