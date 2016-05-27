@@ -12,8 +12,8 @@ This is a simple comic book collection tracking app that allows a user to organi
 
 ## Prerequisites
 
-  * Ruby 2.3.x
-  * SQLite 3
+  * Ruby 2.2.x
+  * SQLite 3 / PostgreSQL
   * Bundler
    
 ## Setting up the REST API
