@@ -26,7 +26,7 @@ class LongboxApi < Sinatra::Base
   end
 
   configure :production do
-    DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_RED_URL'])
+    DataMapper.setup(:default, ENV['DATABASE_URL'])
   end
 
   require_relative 'models/init'
