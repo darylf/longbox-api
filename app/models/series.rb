@@ -1,5 +1,5 @@
-# Publisher model
-class Publisher
+# Series model
+class Series
   include DataMapper::Resource
 
   property :id, Serial
@@ -7,6 +7,6 @@ class Publisher
   property :created_at, DateTime
   property :updated_at, DateTime
 
-  has n, :series
-  has n, :books, through: :series
+  belongs_to :publisher
+  has n, :books
 end

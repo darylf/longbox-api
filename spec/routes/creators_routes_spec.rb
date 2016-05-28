@@ -6,7 +6,10 @@ describe 'API - Creators' do
 
   let(:creator_params) { { first_name: 'Peter', last_name: 'Parker' } }
 
-  before(:each) { Creator.all.destroy }
+  before(:each) do
+    CreatorRole.all.destroy
+    Creator.all.destroy
+  end
 
   def app
     LongboxApi
@@ -45,7 +48,6 @@ describe 'API - Creators' do
   describe 'PUT /api/creators/:id' do
     it 'should insert the creator into the database' do
       creator = Creator.create(creator_params)
-
       creator.first_name = 'Ben'
 
       put "/api/creators/#{creator.id}", creator.to_json

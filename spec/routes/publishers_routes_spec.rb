@@ -9,6 +9,7 @@ describe 'API - Publishers' do
   end
 
   before(:each) { Publisher.all.destroy }
+  let(:book_params) { { name: 'Batman', issue_number: 1, series_id: 1 } }
 
   describe 'GET /api/publishers' do
     it 'should get all publishers' do
@@ -30,20 +31,9 @@ describe 'API - Publishers' do
       expect(response['name']).to eq('Test1')
     end
 
-    it 'should load books if "include" param passed in query string' do
-      publisher = Publisher.create(name: 'Test1')
-      Book.create(name: 'Batman', issue_number: 1, publisher_id: publisher.id)
-
-      get "/api/publishers/#{publisher.id}?include=books"
-      expect(last_response).to be_ok
-
-      response = JSON.parse(last_response.body)
-      expect(response['books'][0]['name']).to eq('Batman')
-    end
-
     it 'should NOT load books if "include" param is not in query string' do
       publisher = Publisher.create(name: 'Test1')
-      Book.create(name: 'Batman', issue_number: 1, publisher_id: publisher.id)
+      Book.create(book_params)
 
       get "/api/publishers/#{publisher.id}"
       expect(last_response).to be_ok

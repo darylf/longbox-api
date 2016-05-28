@@ -11,9 +11,7 @@ class LongboxApi < Sinatra::Base
     publisher = Publisher.get(params[:id])
     halt 404 if publisher.nil?
 
-    options = (!params[:include].nil? && params[:include].include?('books')) ? { methods: [:books] } : {}
-
-    publisher.to_json(options)
+    publisher.to_json
   end
 
   post '/api/publishers' do

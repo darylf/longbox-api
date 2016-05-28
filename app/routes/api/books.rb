@@ -4,7 +4,15 @@ require 'json'
 # Book API Routes
 class LongboxApi < Sinatra::Base
   get '/api/books' do
-    Book.all.to_json
+    if params[:publisher]
+      Book.all(Book.series.publisher.id => params['publisher']).to_json
+    elsif params[:series]
+      Book.all(series_id: params[:series]).to_json
+    elsif params[:creator]
+      Book.all(Book.creators.id => params[:creator]).to_json
+    else
+      Book.all.to_json
+    end
   end
 
   get '/api/books/:id' do
@@ -18,7 +26,7 @@ class LongboxApi < Sinatra::Base
     book = Book.new(
       name: body['name'],
       issue_number: body['issue_number'],
-      publisher_id: body['publisher_id'],
+      series_id: body['series_id'],
       created_at: DateTime.now,
       updated_at: DateTime.now
     )
@@ -40,7 +48,7 @@ class LongboxApi < Sinatra::Base
 
     book.name = body['name']
     book.issue_number = body['issue_number']
-    book.publisher_id = body['publisher_id']
+    book.series_id = body['series_id']
     book.updated_at = DateTime.now
 
     if book.save

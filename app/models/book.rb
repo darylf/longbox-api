@@ -8,5 +8,8 @@ class Book
   property :created_at, DateTime
   property :updated_at, DateTime
 
-  belongs_to :publisher
+  belongs_to :series
+
+  has n, :creator_roles
+  has n, :creators, through: :creator_roles
 end
