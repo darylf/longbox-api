@@ -4,15 +4,12 @@ require 'json'
 # Book API Routes
 class LongboxApi < Sinatra::Base
   get '/api/books' do
-    if params[:publisher]
-      Book.all(Book.series.publisher.id => params['publisher']).to_json
-    elsif params[:series]
-      Book.all(series_id: params[:series]).to_json
-    elsif params[:creator]
-      Book.all(Book.creators.id => params[:creator]).to_json
-    else
-      Book.all.to_json
-    end
+    options = { conditions: {} }
+    options[:conditions][Book.series.publisher.id] = params[:publisher] if params[:publisher]
+    options[:conditions][:series_id] = params[:series] if params[:series]
+    options[:conditions][Book.creators.id] = params[:creator] if params[:creator]
+
+    Book.all(options).to_json(relationships: { series: { methods: [:publisher] } })
   end
 
   get '/api/books/:id' do
