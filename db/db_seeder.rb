@@ -1,4 +1,4 @@
-require_relative '../app/server'
+Dir.glob('./app/models/*.rb').each { |file| require file }
 
 # Seed the database with data
 class DBSeeder

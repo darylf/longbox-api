@@ -1,5 +1,6 @@
 require_relative '../spec_helper'
-require_relative '../../app/models/book'
+
+require_relative '../../app/controllers/books_controller'
 
 describe 'API - Books' do
   include Rack::Test::Methods
@@ -11,7 +12,7 @@ describe 'API - Books' do
   before(:each) { Book.all.destroy }
 
   def app
-    LongboxApi
+    BooksController
   end
 
   describe 'GET /api/books' do

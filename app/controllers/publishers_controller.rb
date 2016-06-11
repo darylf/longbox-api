@@ -1,8 +1,7 @@
-require_relative '../../models/publisher'
-require 'json'
+require_relative './application_controller'
 
 # Publisher API Routes
-class LongboxApi < Sinatra::Base
+class PublishersController < ApplicationController
   get '/api/publishers' do
     Publisher.all.to_json
   end

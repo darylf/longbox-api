@@ -1,3 +1,7 @@
+require 'dm-core'
+require 'dm-migrations'
+require_relative './publisher'
+
 # Series model
 class Series
   include DataMapper::Resource

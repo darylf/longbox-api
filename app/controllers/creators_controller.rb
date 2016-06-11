@@ -1,8 +1,7 @@
-require_relative '../../models/creator'
-require 'json'
+require_relative './application_controller'
 
 # Creator API Routes
-class LongboxApi < Sinatra::Base
+class CreatorsController < ApplicationController
   get '/api/creators' do
     Creator.all.to_json
   end

@@ -1,10 +1,11 @@
 require 'spec_helper'
+require_relative '../app/controllers/website_controller'
 
 describe 'Longbox' do
   include Rack::Test::Methods
 
   def app
-    LongboxApi
+    WebsiteController
   end
 
   it 'displays home page' do

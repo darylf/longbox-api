@@ -1,11 +1,11 @@
 require_relative '../spec_helper'
-require_relative '../../app/models/publisher'
+require_relative '../../app/controllers/publishers_controller'
 
 describe 'API - Publishers' do
   include Rack::Test::Methods
 
   def app
-    LongboxApi
+    PublishersController
   end
 
   before(:each) { Publisher.all.destroy }

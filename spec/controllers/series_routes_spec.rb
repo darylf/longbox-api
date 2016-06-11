@@ -1,11 +1,11 @@
 require_relative '../spec_helper'
-require_relative '../../app/models/series'
+require_relative '../../app/controllers/series_controller'
 
 describe 'API - Series' do
   include Rack::Test::Methods
 
   def app
-    LongboxApi
+    SeriesController
   end
 
   let(:publisher) { Publisher.create(name: 'Perfecto Publishing') }

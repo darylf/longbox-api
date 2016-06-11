@@ -1,8 +1,7 @@
-require_relative '../../models/series'
-require 'json'
+require_relative './application_controller'
 
 # Series API Routes
-class LongboxApi < Sinatra::Base
+class SeriesController < ApplicationController
   get '/api/series' do
     Series.all.to_json
   end

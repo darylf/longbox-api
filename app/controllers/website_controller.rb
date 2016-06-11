@@ -1,11 +1,7 @@
-require_relative 'api/books'
-require_relative 'api/creator_roles'
-require_relative 'api/creators'
-require_relative 'api/publishers'
-require_relative 'api/series'
+require_relative './application_controller'
 
 # Base Web Routes
-class LongboxApi < Sinatra::Base
+class WebsiteController < ApplicationController
   get '/' do
     send_file File.expand_path('index.html', settings.public_folder)
   end

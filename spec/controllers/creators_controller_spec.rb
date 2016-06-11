@@ -1,5 +1,5 @@
 require_relative '../spec_helper'
-require_relative '../../app/models/creator'
+require_relative '../../app/controllers/creators_controller'
 
 describe 'API - Creators' do
   include Rack::Test::Methods
@@ -12,7 +12,7 @@ describe 'API - Creators' do
   end
 
   def app
-    LongboxApi
+    CreatorsController
   end
 
   describe 'GET /api/creators' do

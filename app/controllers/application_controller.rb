@@ -1,37 +1,12 @@
-# This site allows users to track a comic book
-# collection, and present statistics about
-# popular publishers and creators. Users are
-# able to add/update/delete entities.
-#
-# Author::    Daryl Fritz  (http://darylfritz.com)
-# Copyright:: Copyright (c) 2016 Daryl Fritz
-# License::   GNU General Public License (GPL) version 3
+$LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
 
-ENV['RACK_ENV'] ||= 'development'
+require 'sinatra/base'
+require 'json'
 
-require 'sinatra'
-require 'data_mapper'
+# Aplication Controller
+class ApplicationController < Sinatra::Base
+  # helpers ApplicationHelpers
 
-# This class acts as the "main" script. It
-# initializes the database, models, and
-# routes.
-class LongboxApi < Sinatra::Base
-  configure :development do
-    db_dev = "sqlite3://#{Dir.pwd}/db/longbox-api.devl.sqlite3"
-    DataMapper.setup :default, db_dev
-  end
-
-  configure :test do
-    DataMapper.setup(:default, 'sqlite::memory:')
-  end
-
-  configure :production do
-    DataMapper.setup(:default, ENV['DATABASE_URL'])
-  end
-
-  require_relative 'models/init'
-  DataMapper.finalize.auto_upgrade!
-  require_relative 'routes/init'
-
-  run! if app_file == $PROGRAM_NAME
+  set :views, File.expand_path('../../views', __FILE__)
+  enable :sessions, :method_override
 end

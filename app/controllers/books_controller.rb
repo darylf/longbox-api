@@ -1,8 +1,7 @@
-require_relative '../../models/book'
-require 'json'
+require_relative './application_controller'
 
 # Book API Routes
-class LongboxApi < Sinatra::Base
+class BooksController < ApplicationController
   get '/api/books' do
     options = { conditions: {} }
     options[:conditions][Book.series.publisher.id] = params[:publisher] if params[:publisher]

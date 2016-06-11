@@ -1,3 +1,9 @@
+require 'dm-core'
+require 'dm-migrations'
+
+require_relative './book'
+require_relative './creator_role'
+
 # Creator model
 class Creator
   include DataMapper::Resource
