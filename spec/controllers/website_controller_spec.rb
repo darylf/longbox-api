@@ -1,5 +1,5 @@
-require 'spec_helper'
-require_relative '../app/controllers/website_controller'
+require_relative '../spec_helper'
+require_relative '../../app/controllers/website_controller'
 
 describe 'Longbox' do
   include Rack::Test::Methods

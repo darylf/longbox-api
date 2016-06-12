@@ -2,7 +2,7 @@ require_relative './application_controller'
 
 # Creator API Routes
 class CreatorsController < ApplicationController
-  get '/api/creators' do
+  get '/api/creators/?' do
     Creator.all.to_json
   end
 
@@ -13,7 +13,7 @@ class CreatorsController < ApplicationController
     creator.to_json
   end
 
-  post '/api/creators' do
+  post '/api/creators/?' do
     body = JSON.parse request.body.read
     creator = Creator.new(
       first_name: body['first_name'],

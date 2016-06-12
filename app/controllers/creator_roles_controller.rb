@@ -2,7 +2,7 @@ require_relative './application_controller'
 
 # Creator/Roles API Routes
 class CreatorRolesController < ApplicationController
-  get '/api/creator_roles' do
+  get '/api/creator_roles/?' do
     CreatorRole.all.to_json
   end
 
@@ -14,7 +14,7 @@ class CreatorRolesController < ApplicationController
     creator_role.to_json
   end
 
-  post '/api/creator_roles' do
+  post '/api/creator_roles/?' do
     body = JSON.parse request.body.read
     creator_role = CreatorRole.new(
       book_id: body['book_id'],

@@ -2,7 +2,7 @@ require_relative './application_controller'
 
 # Book API Routes
 class BooksController < ApplicationController
-  get '/api/books' do
+  get '/api/books/?' do
     options = { conditions: {} }
     options[:conditions][Book.series.publisher.id] = params[:publisher] if params[:publisher]
     options[:conditions][:series_id] = params[:series] if params[:series]
@@ -17,7 +17,7 @@ class BooksController < ApplicationController
     book.to_json
   end
 
-  post '/api/books' do
+  post '/api/books/?' do
     body = JSON.parse request.body.read
     book = Book.new(
       name: body['name'],

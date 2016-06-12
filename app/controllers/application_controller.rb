@@ -7,6 +7,6 @@ require 'json'
 class ApplicationController < Sinatra::Base
   # helpers ApplicationHelpers
 
-  set :views, File.expand_path('../../views', __FILE__)
+  set :root, File.expand_path('../../', __FILE__)
   enable :sessions, :method_override
 end

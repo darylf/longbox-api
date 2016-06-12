@@ -2,7 +2,7 @@ require_relative './application_controller'
 
 # Series API Routes
 class SeriesController < ApplicationController
-  get '/api/series' do
+  get '/api/series/?' do
     Series.all.to_json
   end
 
@@ -15,7 +15,7 @@ class SeriesController < ApplicationController
     series.to_json(options)
   end
 
-  post '/api/series' do
+  post '/api/series/?' do
     body = JSON.parse request.body.read
     series = Series.new(
       name: body['name'],

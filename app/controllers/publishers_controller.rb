@@ -2,7 +2,7 @@ require_relative './application_controller'
 
 # Publisher API Routes
 class PublishersController < ApplicationController
-  get '/api/publishers' do
+  get '/api/publishers/?' do
     Publisher.all.to_json
   end
 
@@ -13,7 +13,7 @@ class PublishersController < ApplicationController
     publisher.to_json
   end
 
-  post '/api/publishers' do
+  post '/api/publishers/?' do
     body = JSON.parse request.body.read
     publisher = Publisher.new(
       name: body['name'],
