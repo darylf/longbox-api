@@ -1,5 +1,6 @@
 require 'dm-core'
-require 'dm-migrations'
+require 'dm-validations'
+
 require_relative './publisher'
 
 # Series model
@@ -13,4 +14,6 @@ class Series
 
   belongs_to :publisher
   has n, :books
+
+  validates_presence_of :name
 end

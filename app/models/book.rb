@@ -1,5 +1,6 @@
 require 'dm-core'
 require 'dm-migrations'
+require 'dm-validations'
 
 require_relative './series'
 require_relative './creator_role'
@@ -10,7 +11,7 @@ class Book
 
   property :id, Serial
   property :name, String
-  property :issue_number, Integer
+  property :issue_number, String
   property :created_at, DateTime
   property :updated_at, DateTime
 
@@ -18,4 +19,7 @@ class Book
 
   has n, :creator_roles
   has n, :creators, through: :creator_roles
+
+  validates_format_of :issue_number, with: /^\d+$|^\d+\.?\d+$/
+  # example: 1 or 1.0
 end

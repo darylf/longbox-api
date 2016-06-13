@@ -1,5 +1,5 @@
 require 'dm-core'
-require 'dm-migrations'
+require 'dm-validations'
 
 require_relative './book'
 require_relative './creator'

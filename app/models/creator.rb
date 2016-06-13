@@ -1,5 +1,5 @@
 require 'dm-core'
-require 'dm-migrations'
+require 'dm-validations'
 
 require_relative './book'
 require_relative './creator_role'
@@ -16,4 +16,7 @@ class Creator
 
   has n, :creator_roles
   has n, :books, through: :creator_roles
+
+  validates_presence_of :first_name
+  validates_presence_of :last_name
 end
